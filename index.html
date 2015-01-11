@@ -2,12 +2,48 @@
 <html>
 <title>Welcome HTML</title>
 <head>
+	<style type="text/css">
+		body{
+			background: #cccccc;
+		}
 
+		.welcome{
+			color: #ff0000;
+			font-size: 18px;
+		}
+
+		#welcome-span{
+			color: #ff00ff;
+			font-size: 18px;
+			text-decoration: underline;;
+		}
+
+		#table1{
+			width: 80%;
+			border: 4px #ffff00 solid;
+			border-spacing: 0px;
+		}
+
+		tr, td{
+			border: 1px #ffff00 solid;
+		}
+	</style>
 </head>
 
 <body>
-
-Welcome to HTML/HTML5
-Edited by server
+	<span id="welcome-span">Id label css</span><br>
+	<span class="welcome" style="color: #ffff00;">Class label css</span><br>
+	<span style="color: #ffff00;font-size: 24px;">In line css</span>
+	<table id="table1">
+		<tr>
+			<td>Column 1</td>
+			<td>Column 2</td>
+			<td>Column 3</td>
+		</tr>
+		<tr>
+			<td colspan="2"> Row 2 merged 2 columns</td>
+			<td>Row 2 Column 2</td>
+		</tr>
+	</table>
 </body>
 </html>
