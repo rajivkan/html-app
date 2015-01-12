@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<title>Welcome HTML</title>
+<head>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+
+		function onChangeImage(){
+			if(document.getElementById("img1").src.match("On.png")){
+				document.getElementById("img1").src = "images/Off.png";
+				document.getElementById("txt1").value = "images/Off.png";
+				document.getElementById("div1").innerHTML = "images/Off.png";
+			}
+			else{
+				document.getElementById("img1").src = "images/On.png";
+				document.getElementById("txt1").value = "images/On.png";
+				document.getElementById("div1").innerHTML = "images/On.png";
+			}
+		}
+
+	</script>
+</head>
+
+<body>
+	<img id="img1" src="images/Off.png" onclick="onChangeImage()">
+	<input id="txt1" value="images/Off.png"></input>
+	<div id="div1">images/Off.png</div>
+</body>
+</html>
