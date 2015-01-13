@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<title>Welcome HTML</title>
+<head>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+
+		function onLoad(){
+			var arrayName = ["Abc 1", "Abc 2", "Abc 3", "Abc 4", "Abc 5"];
+			var strRecord = "";
+			for(var i = 0; i < arrayName.length; i++){
+				strRecord += "<tr><td>"+ arrayName[i] +"</td></tr>"
+			}
+
+			document.getElementById("table1").innerHTML = strRecord;
+			//var arrayName = [{name:"Abc 1", address:"Address 1"}];
+		}
+
+
+	</script>
+	<style type="text/css">
+
+		table{
+			width:100%;
+		}
+
+	</style>
+</head>
+
+<body id="bodyTag" onload="onLoad()">
+	<table id="table1"></table>
+</body>
+</html>

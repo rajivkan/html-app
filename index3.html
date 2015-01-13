@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<title>Welcome HTML</title>
+<head>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+
+		function onChangeImage(){
+			if(document.getElementById("img1").src.match("On.png")){
+				document.getElementById("img1").src = "images/Off.png";
+				//document.getElementById("txt1").value = "images/Off.png";
+				document.getElementById("div1").innerHTML = "images/Off.png";
+			}
+			else{
+				document.getElementById("img1").src = "images/On.png";
+				//document.getElementById("txt1").value = "images/On.png";
+				document.getElementById("div1").innerHTML = "images/On.png";
+			}
+		}
+
+		function onLoad(){
+			var img = document.createElement("img");
+			img.id="img1";
+			img.src = "images/Off.png";
+			img.onclick = function(){
+				onChangeImage();
+			}
+
+			document.getElementById("bodyTag").appendChild(img);
+
+			var divImageName = document.createElement("div");
+			divImageName.id = "div1";
+			divImageName.style.color = "#ff0000";
+			divImageName.innerHTML = "<span>images/Off.png</span>";
+			//divImageName.innerText = "<span>images/Off.png</span>";
+
+			document.getElementById("bodyTag").appendChild(divImageName);
+		}
+
+	</script>
+
+</head>
+
+<body id="bodyTag" onload="onLoad()">
+	<!-- <img id="img1" src="images/Off.png" onclick="onChangeImage()">
+	<input id="txt1" value="images/Off.png"></input>
+	<div id="div1">images/Off.png</div> -->
+</body>
+</html>
