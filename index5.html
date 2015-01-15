@@ -11,6 +11,7 @@
 		function onReset(){
 			document.getElementById("txtName").value = "";
 			document.getElementById("txtAddress").value = "";
+			document.getElementById("btnSubmit").value = "Submit";
 		}
 
 		function onSubmit(){
@@ -27,13 +28,19 @@
 				txtAddress.focus();
 				return;
 			}
+			if(document.getElementById("btnSubmit").value == "Submit"){
+				var obj = {};
+				obj.recordId = Math.random();
+				obj.name = txtName.value;
+				obj.address = txtAddress.value;
 
-			var obj = {};
-			obj.recordId = Math.random();
-			obj.name = txtName.value;
-			obj.address = txtAddress.value;
+				arrayData.push(obj);
+			}
+			else{
+				editRecord.name = txtName.value;
+				editRecord.address = txtAddress.value;
+			}
 
-			arrayData.push(obj);
 			displayData();
 			onReset();
 		}
@@ -41,7 +48,7 @@
 		function displayData(){
 			var strRecord = "<tr><td style='font-weight:bold; font-size:15px'>Name</td><td style='font-weight:bold; font-size:15px'>Address</td><td>Action</td></tr>";
 			for(var i = 0; i < arrayData.length; i++){
-				strRecord += "<tr><td>"+ arrayData[i].name +"</td><td>"+ arrayData[i].address +"</td><td><input type='button' onclick='onDelete("+ arrayData[i].recordId +")' value='Delete'/> </td></tr>"
+				strRecord += "<tr><td>"+ arrayData[i].name +"</td><td>"+ arrayData[i].address +"</td><td><input type='button' onclick='onDelete("+ arrayData[i].recordId +")' value='Delete'/><input type='button' onclick='onEdit("+ arrayData[i].recordId +")' value='Edit'/> </td></tr>"
 			}
 
 			document.getElementById("tblData").innerHTML = strRecord;
@@ -59,6 +66,19 @@
 				displayData();
 			}
 		}
+
+		var editRecord = null;
+		function onEdit(recordId){
+			for(var i=0; i < arrayData.length; i++){
+				if(arrayData[i].recordId == recordId){
+					editRecord = arrayData[i];
+					document.getElementById("txtName").value = editRecord.name;
+					document.getElementById("txtAddress").value = editRecord.address;
+					document.getElementById("btnSubmit").value = "Edit";
+					break;
+				}
+			}
+		}		
 
 	</script>
 	<style type="text/css">
@@ -81,7 +101,7 @@
 		}*/
 
 		.tbl-data{
-			width:500px;
+			width:700px;
 			border: 1px #000000 solid;
 		}
 
@@ -109,7 +129,7 @@
 
 		<tr>
 			<td style="text-align:center"><input type="button" onclick="onReset()" value="Reset"></td>
-			<td style="text-align:center"><input type="button" onclick="onSubmit()" value="Submit"></td>
+			<td style="text-align:center"><input id="btnSubmit" type="button" name="btnSubmitEdit" onclick="onSubmit()" value="Submit"></td>
 		</tr>
 
 	</table>
