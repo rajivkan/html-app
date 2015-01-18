@@ -3,21 +3,52 @@
 <title>Welcome HTML</title>
 <head>
 	<script type="text/javascript" src="js/lib/jquery-1.11.1.js"></script>
-
-</head>
-<body>
-	<input id="txt" class="text-class" value="jQuery">
 	<script type="text/javascript">
-		//document.getElementsByTagName("body")[0].innerHTML = "This is a javascript";
+		
+		function onLoadEvent(){
+			//document.getElementsByTagName("body")[0].innerHTML = "This is a javascript";
 
-		//$("body").html("This text is displaying using jquery");
-		//alert($("body").html());
+			//$("body").html("This text is displaying using jquery");
+			//alert($("body").html());
 
-		//alert($("#txt").val());
-		//$("#txt").val("Modified input value")
+			//alert($("#txt").val());
+			//$("#txt").val("Modified input value")
 
-		alert($(".text-class").val());
-		$(".text-class").val("Modified input value")
+			//window.alert("call 1");
+		}
+
+		$(document).ready(function(){
+			//alert($(".text-class").val());
+			$(".text-class").val("Modified input value")
+
+			// document.getElementById("btn").onclick = function(){
+			// 	alert("Button clicked");
+			// }
+
+			$("#btn").click(function(){
+				//alert("Button clicked using jQuery");
+
+				var evt = new CustomEvent("CUSTOM_EVENT");
+				evt.test = {name: "Abc 1", address: "Address 1"};
+				window.dispatchEvent(evt);
+			});
+		});
+
+		$(window).load(function(){
+			//window.alert("call 3");
+			//alert($(".text-class").val());
+			//$(".text-class").val("Modified input value")
+		});
+
+
+		window.addEventListener("CUSTOM_EVENT", function(evt){
+			alert(evt.test.name);
+		});
+		
 	</script>
+</head>
+<body> <!--  onload="onLoadEvent()" -->
+	<input id="txt" class="text-class" value="jQuery">
+	<button id="btn">Click Me</button>
 </body>
 </html>
