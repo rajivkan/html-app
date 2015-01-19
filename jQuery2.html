@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<title>Welcome HTML</title>
+<head>
+	<style type="text/css">
+		.div1{
+			background: #ff0000;
+		}
+
+		.div1-class2{
+			/*background: #00ffff;
+			color: #fff000;*/
+		}
+
+		.div1-class2 span{
+			color:red;
+			font-size: 15px;
+		}
+
+		#div2 p{
+			color:green;
+			font-size: 20px;
+		}
+
+		.div2{
+			background: #ff00ff;
+		}
+	</style>
+	<script type="text/javascript" src="js/lib/jquery-1.11.1.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("#div1").addClass("div1-class2");
+
+			//document.getElementById("div2").className = "div2";
+
+		});
+
+		function onRemove(){
+			//$("#div1").removeClass("div1-class2");
+			//alert($("#div1").css("color"));
+			//$("#div1").css("color", "#888888");
+			//document.getElementById("div2").className = "";
+
+			//$("span").filter(".span").css("font-size", "30px");
+
+			$("span, p").filter(".span, .p").css("font-size", "30px");
+
+			//$("#div1 span").css("color", "#ff00ff");
+		}
+
+		function loopExam(){
+			// var arrayData = ["Abc 1", "Abc 2", "Abc 3", "Abc 4"];
+			// $.each(arrayData, function(index, item){
+			// 	console.log("Index: "+index+"::  Item: "+item);
+			// });
+
+			var arrayData = [{name: "Abc 1"}, {name:"Abc 2"}, {name:"Abc 3"}, {name:"Abc 4"}];
+			$.each(arrayData, function(index, item){
+				console.log("Index: "+index+"::  Item: "+item.name);
+			});
+		}
+	</script>
+</head>
+
+<body>
+	<div id="div1" >
+		jQuery DIV<br>
+		<span class="span">Span 1</span>
+		<span class="span">Span 2</span>
+		<span class="span">Span 3</span>
+		<p class="span">p 1</p>
+		<p class="p">p 2</p>
+		<p class="p">p 3</p>
+		<p class="p">p 4</p>
+	</div>
+
+	<div id="div2" class="div2">
+		Javascript DIV<br>
+
+		<span>Span 1</span>
+		<span>Span 2</span>
+		<span>Span 3</span>
+		<p>p 1</p>
+		<p>p 2</p>
+		<p>p 3</p>
+		<p>p 4</p>
+	</div>
+	<button onclick="onRemove()">Click Me</button>
+</body>
+</html>
