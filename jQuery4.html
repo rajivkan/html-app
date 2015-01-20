@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<title>Welcome HTML</title>
+<head>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript" src="js/lib/jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+		function onReset() {
+			//document.frmData.reset();
+		}
+
+		function onSubmit(){
+			$.ajax({url: 'http://localhost/test/test.php?name='+$("#txtNm").val()+"&email="+$("#txtPs").val(), method: "GET", crossDomain : true}).
+			done(function(result){
+				alert("success");
+			}).
+			error(function(error){
+				alert("error");
+			});
+		}
+	</script>
+
+</head>
+<body>
+	<!-- <form name="frmData" action="test.php" method="GET"> -->
+		<h2>Login Form</h2>
+		<table style="width:500px">
+			<tr>
+				<td style="width:120px">Username: </td>
+				<td><input name="name" id="txtNm"></td>
+			</tr>
+
+			<tr>
+				<td>Password: </td>
+				<td><input name="email" id="txtPs"></td>
+			</tr>
+
+			<tr>
+				<td><input onclick="onReset()" value="Reset" type="button"></td>
+				<td><input type="button" value="Login" onclick="onSubmit()"/></td>
+			</tr>
+		</table>
+	<!-- </form> -->
+</body>
+</html>

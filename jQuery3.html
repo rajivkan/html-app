@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<title>Welcome HTML</title>
+<head>
+	<style type="text/css">
+
+		.div1{
+			background: #ff0000;
+		}
+		.span2{
+			font-size: 20px;
+			color: #fff00f;
+		}
+
+	</style>
+	<script type="text/javascript" src="js/lib/jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+
+		 $(document).ready(function(){
+		// 	var div = $("<div></div>");
+		// 	div.html("This is dynamic div");
+
+			var span = $("<span></span>");
+			span.addClass("span2");
+			span.html("<br>This is a span tag 2");
+
+			span.css("text-decoration", "underline");
+			span.click(function(){
+				alert("span 2 clicked");
+			});
+
+			$("#div1").append(span);
+
+		// 	$("body").append(div);
+		 });
+		function onClickSpan(){
+			alert("span clicked");
+		}
+	</script>
+</head>
+<body>
+	<div id="div1" class="div1">
+		This is dynamic div
+		<span onclick="onClickSpan()">
+			This is a span tag 1
+		</span>
+	</div>
+	<br>
+	<div>
+		Div 2
+	</div>
+</body>
+</html>
