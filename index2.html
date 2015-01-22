@@ -20,12 +20,37 @@
 			}
 		}
 
+		var timer;
+		function onStart(){
+			timer = setInterval(function(){
+				onChangeImage();
+			}, 1000);
+		}
+
+		function onStop(){
+			clearInterval(timer);
+		}
+
+		setTimeout(function(){
+			onChangeImage();
+		}, 5000);
+		
+		setInterval(function(){
+			var d = new Date();
+
+			var m_names = new Array("January", "February", "March", 
+						"April", "May", "June", "July", "August", "September", 
+						"October", "November", "December");
+			// January 22, 2015 Time
+			document.getElementById("lblTime").innerHTML = m_names[d.getMonth()] +" "+ d.getDate()+", "+d.getFullYear()+" | "+ d.toLocaleTimeString()
+		}, 1000);
 	</script>
 </head>
 
 <body>
-	<img id="img1" src="images/Off.png" onclick="onChangeImage()">
+	<img id="img1" src="images/Off.png" onclick="onChangeImage()"> Time: <label id="lblTime"></label>
 	<input id="txt1" value="images/Off.png"></input>
 	<div id="div1">images/Off.png</div>
+	<button onclick="onStart()">Start</button> <button onclick="onStop()">Stop</button>
 </body>
 </html>
