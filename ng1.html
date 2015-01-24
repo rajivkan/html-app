@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>-->
+	<script type="text/javascript" src="js/lib/angular.min.js"></script>
+	<script type="text/javascript">
+		/*var name;  // ng-model
+		name="test name"; // ng-init
+		*/
+	</script>
+</head>
+<body ng-app="testApp">
+
+<!-- <div>
+	Name: <input ng-init="name='test data'" ng-model="name"><br>
+	<span ng-bind="name"></span>
+</div>
+<br>
+2nd Span:<br>
+<span ng-bind="name"></span> -->
+
+<div ng-controller="initCtlr">
+	Name: <input ng-model="name"><br>
+	<span ng-bind="name"></span>
+	<!-- <span>{{name}}</span> -->
+	<button ng-click="callMe()">Click Me</button>
+
+	<button onclick="callMe1()">Click Me</button>
+
+	{{getMessage()}}
+</div>
+Span: <span ng-bind="name"></span>
+
+<script type="text/javascript">
+	/*function initCtlr($scope){
+		$scope.name = "test data";
+	}*/
+
+	var testAppModule = angular.module("testApp", []);
+	testAppModule.controller("initCtlr", ["$scope", function($scope){
+		$scope.name = "test data";
+		$scope.callMe = function(){
+			alert("call");
+		}
+
+		$scope.getMessage = function(){
+			var sdsd =  "AngularJs message"
+			return sdsd;
+		}
+	}]);
+
+	function callMe1(){
+		alert("call 1");
+	}
+</script>
+
+</body>
+
+</html>
