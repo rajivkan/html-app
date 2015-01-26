@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script>-->
+	<script type="text/javascript" src="js/lib/angular.min.js"></script>
+	<style type="text/css">
+		table, tr, td{
+			border: 1px #333 solid;
+		}
+	</style>
+</head>
+<body ng-app="testApp">
+	<div ng-controller="studentController">
+		<table style="width:80%">
+			<tr>
+				Search: <input ng-model="studentName">
+			</tr>
+			<tr ng-repeat="x in students | filter:studentName | orderBy:'':true">
+				<td>
+					{{x}} , {{x | uppercase}} , {{x | lowercase}}
+				</td>
+			</tr>
+		</table>
+<br><br>
+		<table style="width:80%">
+			<tr>
+				Search: <input ng-model="name">
+			</tr>
+			<tr ng-repeat="x in persons | filter:name | orderBy:'name'">
+				<td>
+					{{x.name}} , {{x.address}}
+				</td>
+			</tr>
+		</table>
+		<button ng-click="addPerson()">Add</button>
+	</div>
+	<script type="text/javascript">
+	
+		var testApp = angular.module("testApp", []);
+		testApp.controller("studentController", ["$scope", function($scope){
+			scope = $scope;
+			$scope.students = ["Rajesh", "Amit", "Sanjay", "Bharat", "Saurabh"];
+
+			$scope.persons = [{name:"Rajesh", address: "Address 1"}, {name:"Amit", address: "Address 2"}, {name:"Sanjay", address: "Address 3"}, {name:"Bharat", address: "Address 4"}, {name:"Saurabh", address: "Address 5"}];
+			$scope.addPerson = function(){
+				$scope.persons.push({name:"Abc 1", address: "address 6"});
+			}
+		}]);
+	</script>
+</body>
+</html>
