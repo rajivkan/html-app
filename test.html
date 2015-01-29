@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+
+<body ng-app="testApp">
+	<div ng-controller="studentController">
+
+		
+Enter Name : <input type="text" ng-model="name"><br><br>
+
+		<button ng-bind="addLabel" ng-click="add()"></button>
+<button ng-click="clear()">Clear</button>
+<br><br>
+
+
+<table style="width:80%">
+			
+			<tr ng-repeat="x in persons">
+			<td>
+				{{x.name}}  <button name="{{x.id}}" ng-click="edit()">Edit</button> <button name="{{x.id}}" ng-click="delete()">Delete</button>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+	<script type="text/javascript">
+	
+		var testApp = angular.module("testApp", []);
+		testApp.controller("studentController", ["$scope", function($scope){
+			$scope.persons = [];
+			$scope.addLabel = "Add";
+			$scope.add = function()
+            {
+            	if($scope.addLabel == "Add")
+					$scope.persons.push({id: Math.random(),  name:$scope.name});
+				else
+					editrecord.name = $scope.name;
+				$scope.addLabel = "Add";
+			}
+
+            $scope.clear=function(){$scope.name=""}
+            $scope.delete = function()
+            {
+	            if(confirm("Are you sure you want to delete this record?"))
+	            {
+					for( var i = 0; i < $scope.persons.length; i++ )
+			        {
+						if( $scope.persons[i].id == event.currentTarget.name )
+		                {
+		                	$scope.persons.splice(i, 1);
+							break;      
+						}
+					}
+	            }
+            }
+
+           var editrecord = null;
+
+		   $scope.edit = function()
+		   {
+				for( var i = 0; i < $scope.persons.length; i++ )
+		        {
+					if($scope.persons[i].id == event.currentTarget.name )
+		            {   
+                        editrecord = $scope.persons[i];
+                        $scope.name = angular.copy(editrecord.name);
+                        $scope.addLabel = "Edit";
+                        break;
+					}
+				}
+		    }
+}]);
+
+
+	</script>
+
+
+</body>
+</html>

@@ -2,11 +2,11 @@
 	<h2>Login:</h2>
 	<table style="width:500px">
 		<tr>
-			<td>
+			<td style="width:100px">
 				Username:
 			</td>
 			<td>
-				<input id="txtUsername">
+				<input id="txtUsername" ng-model="username" placeholder="{{usernamePlaceHolder}}">
 			</td>
 		</tr>
 
@@ -15,7 +15,7 @@
 				Password:
 			</td>
 			<td>
-				<input id="txtPassword">
+				<input id="txtPassword" ng-model="password" placeholder="{{passwordPlaceHolder}}">
 			</td>
 		</tr>
 
@@ -24,7 +24,7 @@
 
 			</td>
 			<td>
-				<input type="submit" value="Login">
+				<input type="submit" value="Login" ng-click="login()">
 			</td>
 		</tr>
 	</table>

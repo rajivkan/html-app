@@ -20,6 +20,10 @@
 		    function($routeProvider) {
 		        $routeProvider
 		            .when('/', {
+		                templateUrl: 'template/login.html',
+		                controller: 'loginViewCtrl'
+		            })
+		            .when('/home', {
 		                templateUrl: 'template/home.html',
 		                controller: 'homeViewCtrl'
 		            })
@@ -27,29 +31,31 @@
 		                templateUrl: 'template/about.html',
 		                controller: 'aboutViewCtrl'
 		            })
-		            .when('/asdas', {
+		            .when('/contact1', {
 		                templateUrl: 'template/contact.html',
 		                controller: 'contactViewCtrl'
 		            })
 		           }
 		    ]);
 
-		angularApp.controller("homeViewCtrl", ["$scope", function(scope1){
-			scope1.message = "Welcome to Angular Js";
+		angularApp.controller("loginViewCtrl", ["$scope", function($scope){
+		}])
+
+		angularApp.controller("homeViewCtrl", ["$scope", function($scope){
+			$scope.message = "Welcome to Angular Js";
 		}])
 
 		angularApp.controller("aboutViewCtrl", ["$scope", function($scope){
-
 		}]);
 
 		angularApp.controller("contactViewCtrl", ["$scope", function($scope){
-
 		}]);
 
 		angularApp.directive("login", [function(){
 			return {
 				restrict: "C", // E A C 
-				templateUrl: "components/login.html"
+				templateUrl: "components/login.html",
+				controller: "loginController"
 			}
 		}])
 
@@ -59,6 +65,25 @@
 				template: "<div>{{message}}</div>"
 			}
 		}])
+
+		angularApp.controller("loginController", ["$scope", function($scope){
+			$scope.usernamePlaceHolder = "Enter Username";
+			$scope.passwordPlaceHolder = "Enter Password";
+			$scope.username = "";
+			$scope.password = "";
+			$scope.login = function(){
+				if($scope.username == "admin" && $scope.password == "password"){
+					window.location.href = "#/home";
+				}
+				else{
+					alert("Username and Password is invalid.");
+				}
+			}
+		}]);
+
+		angularApp.controller("navController", ["$scope", function($scope){
+			$scope.navLinks = true;
+		}]);
 
 	</script>
 </head>
@@ -72,13 +97,12 @@
 		</tr>	
 
 		<tr id="mainSection">
-			<td style="width:150px; vertical-align:top">
-				<a href="#/">Home</a>
+			<td style="width:150px; vertical-align:top" ng-controller="navController" ng-show="{{navLinks}}">
+				<a href="#/home">Home</a>
 				<br>
 				<a href="#/about1">About</a>
 				<br>
-				<a href="#/asdas">Contact</a>
-				
+				<a href="#/contact1">Contact</a>
 			</td>
 			<td style="vertical-align:top">
 				<div id="mainDiv" ng-view></div>
