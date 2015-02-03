@@ -1,0 +1,29 @@
+<div>
+	Student Details:
+
+	<table style="width:80%">
+		<tr>
+			<td style="width: 200px">
+				Name
+			</td>
+			<td>
+				{{student.name}}
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Address
+			</td>
+			<td>
+				{{student.address}}
+			</td>
+		</tr>
+		<tr>
+			<td>Courses:</td>
+			<td>
+				<span ng-repeat="course in student.courses">  {{course}}  <br> </span>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -20,7 +20,7 @@ Enter Name : <input type="text" ng-model="name"><br><br>
 			
 			<tr ng-repeat="x in persons">
 			<td>
-				{{x.name}}  <button name="{{x.id}}" ng-click="edit()">Edit</button> <button name="{{x.id}}" ng-click="delete()">Delete</button>
+				{{x.name}}  <button name="{{x.id}}" ng-click="edit(x.id)">Edit</button> <button name="{{x.id}}" ng-click="delete()">Delete</button>
 				</td>
 			</tr>
 		</table>
@@ -30,7 +30,7 @@ Enter Name : <input type="text" ng-model="name"><br><br>
 	
 		var testApp = angular.module("testApp", []);
 		testApp.controller("studentController", ["$scope", function($scope){
-			$scope.persons = [];
+			$scope.persons = [{id:1,name:'test1'}];
 			$scope.addLabel = "Add";
 			$scope.add = function()
             {

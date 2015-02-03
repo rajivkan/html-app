@@ -1,0 +1,33 @@
+{
+
+	"student":[
+		{
+			"studentId": 1,
+			"name": "Rajesh Kumar",
+			"address": "Delhi",
+			"courses": [
+				"Computer",
+				"Science",
+				"History"
+			]
+		},
+		{
+			"studentId": 2,
+			"name": "Sanjay",
+			"address": "Bangalore",
+			"courses": [
+				"Computer",
+				"Science"
+			]
+		},
+		{
+			"studentId": 3,
+			"name": "Shashank",
+			"address": "Mumbai",
+			"courses": [
+				"Science",
+				"History"
+			]
+		}
+	]
+}
