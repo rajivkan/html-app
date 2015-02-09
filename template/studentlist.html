@@ -1,6 +1,14 @@
 <div>
 	<table style="width:80%">
 		<tr>
+			<td style="width:130px">
+				Search:
+			</td>
+			<td>
+				<input ng-model="name">
+			</td>
+		</tr>
+		<tr>
 			<td colspan="3" style="color: #ff0000">
 				<custommessage></custommessage>
 			</td>
@@ -19,7 +27,7 @@
 				Action
 			</td>
 		</tr>
-		<tr ng-repeat="student in students">
+		<tr ng-repeat="student in students | filter:name">
 			<td>
 				{{student.studentId}}
 			</td>

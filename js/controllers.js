@@ -20,16 +20,25 @@ appControllers.controller("contactViewCtrl", ["$scope", function($scope){
 }]);
 
 var studentList = [];
-appControllers.controller("studentViewCtrl", ["$scope", "$http", function($scope, $http){
+appControllers.controller("studentViewCtrl", ["$scope", "service", function($scope, service){
 	$("#navSection").show();
 	$scope.message = "";
-	$http.get("data/data.json")
-	.success(function(result){
+	// $http.get("data/data.json")
+	// .success(function(result){
+	// 	$scope.message = "Student data loaded successfully.";
+	// 	$scope.students = result.student;
+	// 	studentList = result.student;
+	// 	add();
+	// })
+	// .error(function(err){
+	// 	$scope.message = "Unable to load student record(s). Please try again.";
+	// });
+
+	service.retrieve("data/datas.json", "GET").then(function(result){
 		$scope.message = "Student data loaded successfully.";
 		$scope.students = result.student;
 		studentList = result.student;
-	})
-	.error(function(err){
+	}, function(err){
 		$scope.message = "Unable to load student record(s). Please try again.";
 	});
 }]);
@@ -43,6 +52,12 @@ appControllers.controller("studentDetailViewCtrl", ["$scope", "$routeParams", fu
 		}
 	}
 }]);
+
+function add(){
+
+	var sds;
+	var ssdfsdf;
+}
 
 appControllers.controller("loginController", ["$scope", function($scope){
 	$scope.usernamePlaceHolder = "Enter Username";
