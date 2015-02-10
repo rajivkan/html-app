@@ -12,9 +12,11 @@
 		}
 
 		function onSubmit(){
-			$.ajax({url: 'http://localhost/test/test.php?name='+$("#txtNm").val()+"&email="+$("#txtPs").val(), method: "GET", crossDomain : true}).
+			//var urlData = {url: 'http://localhost/test/test.php?name='+$("#txtNm").val()+"&email="+$("#txtPs").val(), method: "GET", crossDomain : true};
+			var urlData = {url: 'http://localhost/test/test.php', method: "POST", crossDomain : true, data: {name: $("#txtNm").val(), email: $("#txtPs").val()}};
+			$.ajax(urlData).
 			done(function(result){
-				alert("success");
+				alert(result.toString());
 			}).
 			error(function(error){
 				alert("error");
